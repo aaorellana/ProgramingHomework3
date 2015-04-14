@@ -1,0 +1,1 @@
+void quickSort(int *array, int p, int r);
