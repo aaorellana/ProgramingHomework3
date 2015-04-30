@@ -1,5 +1,6 @@
 #include "QuickSort.h"
 
+void swap(int *array, int i, int j);
 //help from Introduction to Algorithms third edition
 
 //divides the problem into sub problems
@@ -31,17 +32,23 @@ int partition(int *array, int p, int r)
 		{
 			i = i + 1;
 			//swaps the elements
-			temp = array[j];
-			array[j] = array[i];
-			array[i] = temp;
+			swap(array, i, j);
+			
 		}
 	}
 	//swaps the elements
-	temp = array[i + 1];
-	array[i + 1] = array[r];
-	array[r] = temp;
+	swap(array, i + 1, r);
 	
 	return i + 1;
 }
 
+void swap(int *array, int i, int j)
+{
+	int temp;
+
+	temp = array[j];
+	array[j] = array[i];
+	array[i] = temp;
+	
+}
 

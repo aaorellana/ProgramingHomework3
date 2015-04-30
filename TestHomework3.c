@@ -31,32 +31,37 @@ int main(void)
 	quickSort(unsorted5, 1, 5);
 	
 	//tests that repeating element array wont get messed up
-	assert(sorted5[1] == unsorted5[1]);
-	assert(sorted5[2] == unsorted5[2]);
-	assert(sorted5[4] == unsorted5[4]);
+	assert(1 == test(sorted5, unsorted5, 1, 5));
 	
 	//test that the function does not mess up a one element array
-	assert(sorted4[0] == unsorted4[0]);
+	assert(1 == test(sorted4, unsorted4, 1, 1));
 	
 	//tests that it does not mess up a sorted array
-	assert(test_sorted1[1] == test_unsorted2[1]);
-	assert(test_sorted1[4] == test_unsorted2[4]);
-	assert(test_sorted1[2] == test_unsorted2[2]);
+	assert(1 == test(test_sorted1, test_unsorted2, 1, 5));
 	
 	//compares the same index of the sorted and unsorted array
 	//they all should equal since the unsorted should be sorted now
-	assert(sorted[1] == unsorted1[1]);
-	assert(sorted[4] == unsorted1[4]);
-	assert(sorted[2] == unsorted1[2]);
+	assert(1 == test(sorted, unsorted1, 1, 5));
 	
-	assert(sorted1[1] == unsorted2[1]);
-	assert(sorted1[4] == unsorted2[4]);
-	assert(sorted1[2] == unsorted2[2]);
+	assert(1 == test(sorted1, unsorted2, 1, 5));
 	
-	assert(sorted2[1] == unsorted3[1]);
-	assert(sorted2[3] == unsorted3[3]);
-	assert(sorted2[2] == unsorted3[2]);
-	
+	assert(1 == test(sorted2, unsorted3, 1, 5));
 	
 	return 0;
+}
+
+int test(int *array1, int *array2, int begin, int end)
+{
+	int i;
+	int passed = 1; //1 means true
+	
+	for(i = begin; i < end; i++)
+	{
+		if(array1[i] != array2[i])
+		{
+			passed = 0;
+		}	
+	}
+	
+	return passed;
 }
